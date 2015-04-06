@@ -20,7 +20,6 @@ Thread::Thread(int id ,void* location, Priority priority)
 
 }
 
-//this is my commit
 
 Thread::~Thread()
 {
@@ -29,7 +28,11 @@ Thread::~Thread()
 
 int Thread::getID() const
 {
-	std::cout<<"are u";
+<<<<<<< HEAD
+
+=======
+	std::cout << "a";
+>>>>>>> upstream/master
 	return _id;
 }
 
@@ -54,13 +57,16 @@ void Thread::setQueue(Queue queue)
 	_currQueue = queue;
 }
 
+void this_does_nothing(void){
+
+}
+
 Queue Thread::getQueue() const
 {
 	return _currQueue;
 }
 
+<<<<<<< HEAD
 
-//////////////////////////////////////////////
-//////////////////////////////////////////////
-//////////////////////////////////////////////
-//////////////////////////////////////////////
+=======
+>>>>>>> upstream/master

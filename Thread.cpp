@@ -28,7 +28,6 @@ Thread::~Thread()
 
 int Thread::getID() const
 {
-
 	return _id;
 }
 
@@ -53,9 +52,12 @@ void Thread::setQueue(Queue queue)
 	_currQueue = queue;
 }
 
+void this_does_nothing(void){
+
+}
+
 Queue Thread::getQueue() const
 {
 	return _currQueue;
 }
-
 
