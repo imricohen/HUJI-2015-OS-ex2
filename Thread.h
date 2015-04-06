@@ -33,7 +33,7 @@ public:
 
 	Thread(int id, Priority priority);
 
-	Thread(int id ,void* location, Priority priority);
+	Thread(int id ,void (*location)(void), Priority priority);
 
 	~Thread();
 
@@ -42,6 +42,7 @@ public:
 	char* getStack() const;
 
 	sigjmp_buf* getThreadSnapshot() ;
+
 
 	Priority getPriority() const;
 
