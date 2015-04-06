@@ -9,6 +9,8 @@
 #define MAX_THREAD_NUM 100 /* maximal number of threads */
 #define STACK_SIZE 4096 /* stack size per thread (in bytes) */
 
+typedef enum Queue {READY, RUNNING, BLOCKED, TERMINATED} Queue;
+
 /* External interface */
 typedef enum Priority { RED, ORANGE, GREEN } Priority;
 
@@ -36,6 +38,14 @@ int uthread_get_total_quantums();
 
 /* Get the number of thread quantums */
 int uthread_get_quantums(int tid);
+
+void jmp_to_thread(int id);
+
+void timerInit();
+
+void timer_handler(int signal);
+
+void swithThreads(Queue q);
 
 #endif
 

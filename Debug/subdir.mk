@@ -6,14 +6,34 @@
 C_SRCS += \
 ../demo_jmp.c 
 
+CPP_SRCS += \
+../Thread.cpp \
+../test.cpp \
+../uthreads.cpp 
+
 OBJS += \
-./demo_jmp.o 
+./Thread.o \
+./demo_jmp.o \
+./test.o \
+./uthreads.o 
 
 C_DEPS += \
 ./demo_jmp.d 
 
+CPP_DEPS += \
+./Thread.d \
+./test.d \
+./uthreads.d 
+
 
 # Each subdirectory must supply rules for building sources it contributes
+%.o: ../%.cpp
+	@echo 'Building file: $<'
+	@echo 'Invoking: Cross G++ Compiler'
+	g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o "$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
 %.o: ../%.c
 	@echo 'Building file: $<'
 	@echo 'Invoking: Cross GCC Compiler'

@@ -1,22 +1,58 @@
-/*
- * Thread.cpp
- *
- *  Created on: Apr 5, 2015
- *      Author: syoels
- */
-
+#include <setjmp.h>
+#include <signal.h>
+#include <unistd.h>
 #include "Thread.h"
 
-Thread::Thread() {
-	// TODO Auto-generated constructor stub
+
+
+Thread::Thread(int id ,void* location, Priority priority)
+: _id(id), _priority(priority), _currQueue(READY)
+{
+    _stack = new char[STACK_SIZE];
+
+    address_t sp, pc;
+    sp = (address_t)_stack + STACK_SIZE - sizeof(address_t);
+    pc = (address_t)location;
+    sigsetjmp(_threadSnapshot, 1);
+    (_threadSnapshot->__jmpbuf)[JB_SP] = translate_address(sp);
+    (_threadSnapshot->__jmpbuf)[JB_PC] = translate_address(pc);
+    sigemptyset(&_threadSnapshot->__saved_mask);
 
 }
 
+Thread::~Thread()
+{
+    delete _stack;
+}
 
-//some random comment
+int Thread::getID() const
+{
+	return _id;
+}
+
+char* Thread::getStack() const
+{
+    return _stack;
+}
+
+sigjmp_buf* Thread::getThreadSnapshot()
+{
+	return &_threadSnapshot;
+}
 
 
-Thread::~Thread() {
-	// TODO Auto-generated destructor stub
+Priority Thread::getPriority() const
+{
+	return _priority;
+}
+
+void Thread::setQueue(Queue queue)
+{
+	_currQueue = queue;
+}
+
+Queue Thread::getQueue() const
+{
+	return _currQueue;
 }
 
