@@ -62,6 +62,3 @@ private:
 
 #endif /* THREAD_H_ */
 
-
-
-//some comments for git test
