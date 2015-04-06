@@ -12,6 +12,10 @@ Thread::Thread() {
 
 }
 
+
+//some random comment
+
+
 Thread::~Thread() {
 	// TODO Auto-generated destructor stub
 }
