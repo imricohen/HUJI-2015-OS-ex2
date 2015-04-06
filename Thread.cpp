@@ -20,6 +20,8 @@ Thread::Thread(int id ,void* location, Priority priority)
 
 }
 
+//this is my commit
+
 Thread::~Thread()
 {
     delete _stack;
@@ -27,6 +29,7 @@ Thread::~Thread()
 
 int Thread::getID() const
 {
+	std::cout<<"are u";
 	return _id;
 }
 
