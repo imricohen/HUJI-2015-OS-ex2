@@ -28,6 +28,11 @@ Thread::~Thread()
 
 int Thread::getID() const
 {
+<<<<<<< HEAD
+
+=======
+	std::cout << "a";
+>>>>>>> upstream/master
 	return _id;
 }
 
@@ -61,3 +66,7 @@ Queue Thread::getQueue() const
 	return _currQueue;
 }
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> upstream/master
